@@ -41,3 +41,18 @@ h1 {
     display: block;
     margin-top: 10px;
 }
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.btn.edit {
+    background-color: #ffc107;
+}
+
+.btn.delete {
+    background-color: #dc3545;
+}
+

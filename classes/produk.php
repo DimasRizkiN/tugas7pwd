@@ -21,5 +21,25 @@ class Produk {
         }
         return $produk;
     }
+
+    public function getById($id) {
+        $stmt = $this->conn->prepare("SELECT * FROM produk WHERE id = ?");
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+            return $stmt->get_result()->fetch_assoc();
+    }
+
+    public function updateProduk($id, $nama, $harga, $deskripsi) {
+        $stmt = $this->conn->prepare("UPDATE produk SET nama=?, harga=?, deskripsi=? WHERE id=?");
+        $stmt->bind_param("sdsi", $nama, $harga, $deskripsi, $id);
+            return $stmt->execute();
+    }
+
+    public function hapusProduk($id) {
+        $stmt = $this->conn->prepare("DELETE FROM produk WHERE id = ?");
+        $stmt->bind_param("i", $id);
+            return $stmt->execute();
+    }
+
 }
 ?>
